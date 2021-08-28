@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<form method="POST">
+    <h2 align="center">Login</h2>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+        type="text"
+        name="username"
+        id="username"
+        class="form-control"
+        placeholder="Insert username here."
+        />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        placeholder="Insert password here."
+        />
+    </div>
+    <button type="submit" class="btn btn-dark">Login</button>
+</form>
+{% endblock %}

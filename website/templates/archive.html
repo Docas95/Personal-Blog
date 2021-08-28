@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+
+{% block title %}Block Archive{% endblock %}
+
+{% block body %}
+<h2 align="center">Blog Archive</h2>
+<p align="center" class="introduction-content">
+    Here you can find every post I've ever made for this blog, in order.
+</p>
+<hr>
+{% for post in posts %}
+<div class="card text-white bg-dark">
+    <div class="card-header">
+        <h4>
+          {% if user.username == 'Docas95' %}
+          <a class="btn btn-close" href="/delete-post/{{ post.id }}">
+          </a>        
+          {% endif %}
+          {{ post.id }}{{ ' - ' + post.title }}
+        </h4>
+
+    </div>
+    <div class="card-body">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-light" href="/archive/{{ post.id }}">Read full post</a>
+      </div>
+    </div>
+  </div>
+<br>
+{% endfor %}
+{% endblock %}

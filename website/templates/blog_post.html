@@ -1,0 +1,67 @@
+{% extends 'template.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+<div>
+    <h2 class="header"> {{ post.title }}</h2>
+    <p class="introduction-content header"> - {{ post.date.strftime('%Y-%m-%d') }}</p>
+</div>
+<hr class="hr-header">
+<p>{% for word in post.data %}{% if word == '\n'%}<br>{% endif %}{{ word }}{% endfor%}</p>
+<br>
+{% if not most_recent_post %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">    
+        <a class="btn btn-lg btn-dark" href="/archive/{{ post.id + 1 }}">Read next post</a>
+    </div>
+{% else %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-lg btn-dark" disabled>Read next post</button>
+    </div>
+{% endif %}
+
+<hr>
+<br>
+
+<div class="comment-section">
+    <h3>Comment section</h3>
+    <br>
+    <form method="POST">
+        <h4>Make a comment</h4>
+        <textarea
+        name="comment"
+        id="comment"
+        class="form-control"
+        align="center"
+        placeholder="Make a cool comment"
+        >
+    </textarea>
+    <br>
+    {% if user.is_authenticated %}
+        <button type="submit" class="btn btn-dark carrd">Comment</button>
+    {% else %}
+        <button type="submit" class="btn btn-dark carrd" disabled>Login to comment</button>
+    {% endif %}
+    <br>
+
+    {%  for comment in comments %}
+        <div class="card text-white bg-dark w-100">
+            <div class="card-header">
+                {{ comment.date }}
+                {% if user.username == comment.user_name %}
+                    <a class="btn btn-close" href="/delete-comment/{{ comment.id }}"></a>
+                {% endif %}
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{ comment.user_name }}</h5>
+            <p class="card-text">{{ comment.data }}</p>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+</div>
+
+<br>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+
+{% block title %}Create new post{% endblock %}
+
+{% block body%}
+<h2 align='center'>Create a new post</h2>
+<form method='POST'>
+    <h4>Title</h4>
+    <input
+    type="text"
+    name="title"
+    id="title"
+    class="form-control"
+    placeholder="Very cool title"
+    />
+    <br>
+    <h4>Content</h4>
+    <textarea
+    name="content"
+    id="content"
+    class="form-control"
+    placeholder="Even cooler text"
+    >
+    </textarea>
+    <br>
+    <button type="submit" class="btn btn-dark">Make a post</button>
+    <br>
+    <br>
+</form>
+{% endblock %}

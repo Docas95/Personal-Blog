@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+<form method='POST'>
+    <h2 align="center">Sign Up</h2>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        placeholder="Insert email here."
+        /> 
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="username"
+        placeholder="Inset username here."
+        />
+    </div>
+    <div class="mb-3">
+        <label for="password1" class="form-label">Password</label>
+        <input
+        type="password"
+        class="form-control"
+        name="password1"
+        id="password1"
+        placeholder="Insert password here."
+        />
+    </div>
+    <div class="mb-3">
+        <label for="password2" class="form-label">Confirm password</label>
+        <input
+        type="password"
+        class="form-control"
+        name="password2"
+        id="password2"
+        placeholder="Confirm password here."
+        />
+    </div>
+    <br>
+    <button type="submit" class="btn btn-dark">Sign Up</button>
+</form>
+{% endblock %}
